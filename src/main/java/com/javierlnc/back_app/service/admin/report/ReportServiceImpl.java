@@ -44,7 +44,7 @@ public class ReportServiceImpl implements ReportService{
             throw new RuntimeException(e);
         }
     }
-public ReportTechnicianDTO generateReportTechnicican(ReportRequestDTO request){
+public byte[] generateReportTechnicican(ReportRequestDTO request){
         List<TechnicianReportDTO> data = reportRepository.findClosedTicketsInRangeWithResolutionByUsers(request.getStarDate(),request.getEndDate());
         try{
             ReportTechnicianDTO dto = new ReportTechnicianDTO();
@@ -53,12 +53,18 @@ public ReportTechnicianDTO generateReportTechnicican(ReportRequestDTO request){
             dto.setEndDate(request.getEndDate());
             dto.setTechnicians(data);
             convertDTOToReport(dto.getTitle(), dto.getStartDate(), dto.getEndDate());
-            return dto;
+            byte [] pdfBytes = pdfGenerator.generateReportTechnician(dto);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Disposition", "attachment; filename=reporte.pdf");
+            headers.add("Content-Type", "application/pdf");
+            return pdfBytes;
     } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        } catch (DocumentException e) {
             throw new RuntimeException(e);
         }
 }
-    public ReportDataDTO generateReportByUser(ReportRequestDTO request){
+    public byte[] generateReportByUser(ReportRequestDTO request){
         List<TicketDataDTO> data = reportRepository.findClosedTicketsInRangeWithAssignedTechnician(request.getStarDate(),request.getEndDate(),request.getAssignedTechnicianId());
         try{
             ReportDataDTO dto = new ReportDataDTO();
@@ -67,8 +73,14 @@ public ReportTechnicianDTO generateReportTechnicican(ReportRequestDTO request){
             dto.setEndDate(request.getEndDate());
             dto.setTickets(data);
             convertDTOToReport(dto.getTitle(),dto.getStartDate(),dto.getEndDate());
-            return dto;
+            byte [] pdfBytes = pdfGenerator.generateReportPdf(dto);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Disposition", "attachment; filename=reporte.pdf");
+            headers.add("Content-Type", "application/pdf");
+            return pdfBytes;
         } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        } catch (DocumentException e) {
             throw new RuntimeException(e);
         }
     }

@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface ReportService {
     byte[] generateReport(ReportRequestDTO request);
-    ReportTechnicianDTO generateReportTechnicican(ReportRequestDTO request);
-    ReportDataDTO generateReportByUser(ReportRequestDTO request);
+    byte[] generateReportTechnicican(ReportRequestDTO request);
+    byte[] generateReportByUser(ReportRequestDTO request);
 }

@@ -27,13 +27,12 @@ public ResponseEntity<?> generateReport(@RequestBody ReportRequestDTO requestDTO
             switch (type){
                 case "general":
                     byte[] reportGeneral = reportService.generateReport(requestDTO);
-
                     return ResponseEntity.ok(reportGeneral);
                 case "tecnico":
-                    ReportTechnicianDTO reportTechnicican = reportService.generateReportTechnicican(requestDTO);
+                    byte[] reportTechnicican = reportService.generateReportTechnicican(requestDTO);
                     return ResponseEntity.ok(reportTechnicican);
                 case"especifico":
-                    ReportDataDTO reportSpecific = reportService.generateReportByUser(requestDTO);
+                    byte[] reportSpecific = reportService.generateReportByUser(requestDTO);
                     return  ResponseEntity.ok(reportSpecific);
                 default:
                     throw new RuntimeException("No se encuentra el tipo de reporte");
