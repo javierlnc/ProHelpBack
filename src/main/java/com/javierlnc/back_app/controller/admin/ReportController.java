@@ -5,6 +5,7 @@ import com.javierlnc.back_app.dto.ReportRequestDTO;
 import com.javierlnc.back_app.dto.ReportTechnicianDTO;
 import com.javierlnc.back_app.dto.TicketDataDTO;
 import com.javierlnc.back_app.service.admin.report.ReportService;
+import com.javierlnc.back_app.utils.PdfGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +20,14 @@ private final ReportService reportService;
 
 
 @PostMapping("/report")
-public ResponseEntity<?> generateReport(@RequestParam ReportRequestDTO requestDTO){
+public ResponseEntity<?> generateReport(@RequestBody ReportRequestDTO requestDTO){
 
         try {
             String type = requestDTO.getReportType();
             switch (type){
                 case "general":
-                    ReportDataDTO reportGeneral = reportService.generateReport(requestDTO);
+                    byte[] reportGeneral = reportService.generateReport(requestDTO);
+
                     return ResponseEntity.ok(reportGeneral);
                 case "tecnico":
                     ReportTechnicianDTO reportTechnicican = reportService.generateReportTechnicican(requestDTO);

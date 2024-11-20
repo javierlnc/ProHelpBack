@@ -8,7 +8,7 @@ import com.javierlnc.back_app.dto.TicketDataDTO;
 import java.util.List;
 
 public interface ReportService {
-    ReportDataDTO generateReport(ReportRequestDTO request);
+    byte[] generateReport(ReportRequestDTO request);
     ReportTechnicianDTO generateReportTechnicican(ReportRequestDTO request);
     ReportDataDTO generateReportByUser(ReportRequestDTO request);
 }

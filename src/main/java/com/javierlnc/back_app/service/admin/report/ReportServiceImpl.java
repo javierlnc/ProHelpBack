@@ -1,9 +1,12 @@
 package com.javierlnc.back_app.service.admin.report;
 
+import com.itextpdf.text.DocumentException;
 import com.javierlnc.back_app.dto.*;
 import com.javierlnc.back_app.entity.Report;
 import com.javierlnc.back_app.repository.ReportRepository;
+import com.javierlnc.back_app.utils.PdfGenerator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -16,7 +19,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReportServiceImpl implements ReportService{
     private final ReportRepository reportRepository;
-    public ReportDataDTO generateReport(ReportRequestDTO request){
+    private final PdfGenerator pdfGenerator;
+
+
+    public byte[] generateReport(ReportRequestDTO request){
         List<TicketDataDTO> data = fetchReportData(request);
         try{
             ReportDataDTO dto = new ReportDataDTO();
@@ -25,8 +31,16 @@ public class ReportServiceImpl implements ReportService{
             dto.setEndDate(request.getEndDate());
             dto.setTickets(data);
             convertDTOToReport(dto.getTitle(),dto.getStartDate(),dto.getEndDate());
-            return dto;
+            byte [] pdfBytes = pdfGenerator.generateReportPdf(dto);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Disposition", "attachment; filename=reporte.pdf");
+            headers.add("Content-Type", "application/pdf");
+            return pdfBytes;
+
+
         } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        } catch (DocumentException e) {
             throw new RuntimeException(e);
         }
     }
