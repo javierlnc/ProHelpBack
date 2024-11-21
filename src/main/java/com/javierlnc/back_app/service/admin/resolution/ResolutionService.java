@@ -1,6 +1,6 @@
 package com.javierlnc.back_app.service.admin.resolution;
 
-import com.javierlnc.back_app.dto.CategoryDTO;
+
 import com.javierlnc.back_app.dto.ResolutionDTO;
 import com.javierlnc.back_app.dto.ResolutionResponseDTO;
 

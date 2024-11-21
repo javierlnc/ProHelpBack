@@ -7,11 +7,8 @@ import com.javierlnc.back_app.repository.ReportRepository;
 import com.javierlnc.back_app.utils.PdfGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.Document;
 
-import java.io.ByteArrayOutputStream;
 import java.time.LocalDateTime;
 import java.util.List;
 

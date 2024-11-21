@@ -1,16 +1,11 @@
 package com.javierlnc.back_app.controller.admin;
 
-import com.javierlnc.back_app.dto.ReportDataDTO;
 import com.javierlnc.back_app.dto.ReportRequestDTO;
-import com.javierlnc.back_app.dto.ReportTechnicianDTO;
-import com.javierlnc.back_app.dto.TicketDataDTO;
 import com.javierlnc.back_app.service.admin.report.ReportService;
-import com.javierlnc.back_app.utils.PdfGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin")

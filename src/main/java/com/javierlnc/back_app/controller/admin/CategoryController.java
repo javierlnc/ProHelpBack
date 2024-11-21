@@ -1,6 +1,6 @@
 package com.javierlnc.back_app.controller.admin;
 
-import com.javierlnc.back_app.dto.AreaDTO;
+
 import com.javierlnc.back_app.dto.CategoryDTO;
 import com.javierlnc.back_app.exception.UserNotFoundException;
 import com.javierlnc.back_app.service.admin.category.CategoryService;

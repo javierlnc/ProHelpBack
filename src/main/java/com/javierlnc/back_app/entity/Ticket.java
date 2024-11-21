@@ -18,20 +18,20 @@ public class Ticket {
     private User requester;
     private String subject;
     private String description;
-    @ManyToOne(fetch = FetchType.EAGER) // Relación con Category
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "priority_id")
     private Priority priority;
     private TicketStatus status;
-    @ManyToOne(fetch = FetchType.EAGER) // Relación con User (técnico asignado)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "assigned_technician_id")
     private User assignedTechnician;
     private LocalDateTime createdDate;
     private LocalDateTime dueDate;
     private ApprovalStatus approvalStatus;
-    @ManyToOne(fetch = FetchType.EAGER) // Relación con User (técnico que cierra)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "closed_by_id")
     private User closedBy;
     private String resolutionDescription;

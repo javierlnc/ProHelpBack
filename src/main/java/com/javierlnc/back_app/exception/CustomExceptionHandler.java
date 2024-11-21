@@ -37,7 +37,7 @@ public class CustomExceptionHandler {
         Map<String, Object> body = new HashMap<>();
         body.put("message", ex.getMessage());
 
-        return new ResponseEntity<>(body, HttpStatus.CONFLICT);  // Status 409: Conflicto
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
     }
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException ex, WebRequest request) {
@@ -45,16 +45,20 @@ public class CustomExceptionHandler {
         body.put("message", "Argumento no válido");
         body.put("details", ex.getMessage());
 
-        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST); // Status 400: Solicitud incorrecta
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
-    // Manejar la excepción de recurso no encontrado
-    @ExceptionHandler(UserNotFoundException.class)  // Asumiendo que tienes una excepción personalizada
+    @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Object> handleUserNotFoundException(UserNotFoundException ex, WebRequest request) {
         Map<String, Object> body = new HashMap<>();
         body.put("message", ex.getMessage());
 
-        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND); // Status 404: No encontrado
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+    public  ResponseEntity<Object> handleBadPassword(BadPassword ex, WebRequest request){
+        Map<String, Object> body = new HashMap<>();
+        body.put("message", ex.getMessage());
+        return  new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
 

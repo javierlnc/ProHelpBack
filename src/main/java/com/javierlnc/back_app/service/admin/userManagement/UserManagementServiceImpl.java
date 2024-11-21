@@ -3,7 +3,6 @@ package com.javierlnc.back_app.service.admin.userManagement;
 import com.javierlnc.back_app.dto.UserDTO;
 import com.javierlnc.back_app.dto.UserFilterDTO;
 import com.javierlnc.back_app.dto.UserResponseDTO;
-import com.javierlnc.back_app.entity.Area;
 import com.javierlnc.back_app.entity.User;
 import com.javierlnc.back_app.exception.EmailAlreadyExistsException;
 import com.javierlnc.back_app.exception.UserNotFoundException;
@@ -19,7 +18,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

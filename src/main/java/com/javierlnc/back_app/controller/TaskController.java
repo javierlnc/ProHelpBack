@@ -2,11 +2,9 @@ package com.javierlnc.back_app.controller;
 
 import com.javierlnc.back_app.dto.TaskDTO;
 import com.javierlnc.back_app.dto.TaskResponseDTO;
-import com.javierlnc.back_app.entity.Task;
 import com.javierlnc.back_app.entity.User;
 import com.javierlnc.back_app.repository.UserRepository;
 import com.javierlnc.back_app.service.task.TaskService;
-import jakarta.persistence.GeneratedValue;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

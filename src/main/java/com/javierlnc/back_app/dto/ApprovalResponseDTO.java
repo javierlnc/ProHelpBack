@@ -1,6 +1,5 @@
 package com.javierlnc.back_app.dto;
 
-import com.javierlnc.back_app.enums.TicketStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;

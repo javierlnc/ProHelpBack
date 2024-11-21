@@ -3,6 +3,7 @@ package com.javierlnc.back_app.controller;
 import com.javierlnc.back_app.dto.AuthRequest;
 import com.javierlnc.back_app.dto.AuthResponse;
 import com.javierlnc.back_app.entity.User;
+import com.javierlnc.back_app.exception.BadPassword;
 import com.javierlnc.back_app.repository.UserRepository;
 import com.javierlnc.back_app.service.jwt.UserService;
 import com.javierlnc.back_app.utils.JwtUtil;
@@ -43,7 +44,7 @@ public class AuthController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (BadCredentialsException e) {
-            throw new BadCredentialsException("Contraseña incorrecta");
+            throw new BadPassword("Contraseña incorrecta");
         }
     }
 

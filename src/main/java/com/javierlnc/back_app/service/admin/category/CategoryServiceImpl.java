@@ -2,7 +2,6 @@ package com.javierlnc.back_app.service.admin.category;
 
 import com.javierlnc.back_app.dto.CategoryDTO;
 import com.javierlnc.back_app.dto.CategoryResponseDTO;
-import com.javierlnc.back_app.entity.Area;
 import com.javierlnc.back_app.entity.Category;
 import com.javierlnc.back_app.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;

@@ -2,7 +2,6 @@ package com.javierlnc.back_app.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 @Data

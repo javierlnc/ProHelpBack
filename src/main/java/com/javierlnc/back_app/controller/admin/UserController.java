@@ -2,20 +2,15 @@ package com.javierlnc.back_app.controller.admin;
 
 import com.javierlnc.back_app.dto.UserDTO;
 import com.javierlnc.back_app.dto.UserFilterDTO;
-import com.javierlnc.back_app.enums.UserRole;
 import com.javierlnc.back_app.exception.UserNotFoundException;
 import com.javierlnc.back_app.service.admin.userManagement.UserManagementService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/admin")

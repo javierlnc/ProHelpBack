@@ -70,7 +70,6 @@ public class TicketController {
             throw new RuntimeException(e);
         }
 
-
     }
     @GetMapping("/approval/{ticketId}")
     public ResponseEntity<ApprovalResponseDTO> getTicketPendingApproval(@PathVariable Long ticketId){
@@ -96,7 +95,6 @@ public class TicketController {
             @PathVariable Long ticketId,
             @RequestBody Long status,
             Authentication authentication) {
-
         User user = userRepository.findByUsername(authentication.getName())
                 .orElseThrow(() -> new UserNotFoundException("Usuario no encontrado"));
 

@@ -1,7 +1,6 @@
 package com.javierlnc.back_app.dto;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 @Data

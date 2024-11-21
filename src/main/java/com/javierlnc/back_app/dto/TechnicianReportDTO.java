@@ -8,7 +8,7 @@ import lombok.Data;
 public class TechnicianReportDTO {
     private Long userId;
     private String userName;
-    private Long totalTickets; // Total de tickets
-    private Long overdueTickets; // Tickets vencidos
+    private Long totalTickets;
+    private Long overdueTickets;
     private Long onTimeTickets;
 }
