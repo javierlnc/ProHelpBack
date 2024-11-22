@@ -9,7 +9,6 @@ import com.javierlnc.back_app.service.jwt.UserService;
 import com.javierlnc.back_app.utils.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -43,7 +42,7 @@ public class AuthController {
     private void authenticate(String username, String password) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        } catch (BadCredentialsException e) {
+        } catch ( RuntimeException e) {
             throw new BadPassword("Contraseña incorrecta");
         }
     }

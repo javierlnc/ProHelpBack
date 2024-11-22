@@ -55,6 +55,7 @@ public class CustomExceptionHandler {
 
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(BadPassword.class)
     public  ResponseEntity<Object> handleBadPassword(BadPassword ex, WebRequest request){
         Map<String, Object> body = new HashMap<>();
         body.put("message", ex.getMessage());
